@@ -1,0 +1,184 @@
+﻿BATTLE LEGENDS
+Gameplay, Combat & Match Rules
+Version 1.0 â€¢ September 30, 2026
+1. Purpose
+This document defines the operational rules that gameplay systems must enforce. Numerical balance values such as final damage, cooldowns, player capacity and match duration remain configurable/open decisions unless explicitly established by the source plan.
+2. Core Fair-Play Rules
+The server is authoritative for damage, combat outcomes, currency, rewards and kill credit.
+Players may send action intent, but may not declare damage, target validity, currency, match result or reward amount.
+Attacks must obey configured cooldowns, ranges, attack phases and target eligibility.
+Major attacks must have readable startup/telegraphing or another meaningful response window.
+Long combos must not become unavoidable defeats.
+Unauthorized speed changes, teleportation or invulnerability are prohibited.
+Friendly fire is disabled by default in team modes.
+Competitive character attributes must remain balanced; progression should not create unavoidable combat advantages.
+Exploit attempts and invalid remote requests are rejected server-side.
+3. Player Combat Rules
+Action
+Rule
+Light attack
+Combo-capable basic attack; server validates timing/cooldown/target.
+Heavy attack
+Slower, stronger attack with visible wind-up, longer recovery and greater knockback.
+Block
+Defensive state with defined movement/stamina rules; final tuning is configurable.
+Dodge
+Bounded movement/protection action with configured cooldown.
+Dash
+Mobility action; cannot be used to bypass server movement/security rules.
+Jump
+Standard Roblox jump unless a specific mode changes it.
+Special
+Character-specific ability with activation conditions, cooldown and optional resource cost.
+Ultimate
+Requires sufficient ultimate meter; activation is visible and must provide counterplay.
+4. Combo Rules
+Support configurable three-hit and five-hit chains.
+Each combo uses defined timing windows.
+Combo state resets when its reset conditions occur.
+Longer combos may use damage scaling.
+Finishing attacks may apply stronger knockback.
+Air-combo behavior is optional/configurable.
+Combo hit confirmation must come from validated combat state.
+5. Ability Rules
+Each ability definition shall contain: name, description, input, activation conditions, cooldown, optional energy cost, range, damage, area of effect, startup, active duration, recovery, animation, sound, VFX, server validation and counterplay.
+6. Ultimate Rules
+Ultimate meter increases from legitimate combat activity.
+Meter progress is visible to the player.
+Activation requires sufficient meter.
+Ultimate activation has distinctive animation/audio presentation.
+Ultimates must have clear telegraphing and fair hit detection.
+Damage/duration must be balanced through configurable data.
+Ultimates must not be designed as unavoidable attacks.
+7. Free-for-All Rules
+Players compete individually.
+Each eligible player has an individual score.
+The match uses a configurable timer.
+Kills contribute to the configured scoring system.
+At match end, the server calculates results from authoritative match data.
+Eligible rewards are distributed once.
+Players receive a results screen and may return to the lobby or queue again.
+8. 1v1 Duel Rules
+Two players compete with equal starting conditions.
+The mode uses configurable rounds.
+Match victory is based on round wins.
+Ranked matchmaking is a later-development feature unless separately enabled.
+9. 2v2 Team Battle Rules
+Two teams of two players compete.
+Team score determines the configured victory condition.
+Team identity is shown through UI/visual markers.
+Friendly fire is disabled by default.
+10. Training Grounds Rules
+No competitive scoring.
+Practice dummies may be stationary, moving, blocking, dodging, combo-focused or damage-test focused.
+Damage and useful training feedback are displayed.
+Players may reset dummies and, where enabled, reset ability cooldowns.
+Training rewards remain separate from competitive rewards unless explicitly balanced and validated.
+11. Survival Rules
+Players fight increasing waves of AI opponents.
+Difficulty increases through configured wave progression.
+Rewards are distributed according to validated wave outcomes.
+AI uses readable attacks and consistent gameplay rules.
+Boss encounters are a future extension.
+12. Match Lifecycle Rules
+Waiting for eligible players.
+Queue registration and eligibility validation.
+Matchmaking and arena selection.
+Spawn/teleport and character initialization.
+Pre-match countdown.
+Active combat.
+End-condition evaluation.
+Final result calculation.
+Idempotent reward distribution.
+Results display.
+Return to lobby or next queue.
+13. Disconnect / Failure Rules
+A player leaving must not strand remaining players in an invalid match state.
+Unexpected deaths, late arrivals and player-count changes must be handled by the match manager.
+Match rewards must not be duplicated because of reconnects or repeated completion events.
+Server shutdown must follow safe persistence and match cleanup procedures.
+Failed DataStore loads must not be replaced with defaults and then saved over existing progress.
+14. Progression & Reward Rules
+Track level, experience, kills, deaths, wins, losses, matches, streaks, achievements, owned fighters and cosmetics.
+Experience may come from completed matches, victories and configured achievements/objectives.
+Battle Coins may come from match participation, victories, legitimate kills, daily rewards and achievements.
+All important balance changes and item grants are server-authoritative.
+Rewards must be protected against duplicate processing.
+Unlocks should provide meaningful progression without selling unavoidable competitive advantages.
+15. Character Rules
+Fighter
+Role
+Special
+Ultimate
+Shadow Striker
+Balanced melee
+Shadow Burst
+Phantom Overdrive
+Frost Reaper
+Technical ranged
+Frozen Wave
+Absolute Zero
+Thunder Ronin
+High mobility
+Thunder Dash
+Storm Breaker
+Inferno Titan
+Heavy damage
+Flame Smash
+Infernal Cataclysm
+Void Phantom
+Evasive trickster
+Void Step
+Dimensional Collapse
+Solar Guardian
+Defensive
+Radiant Shield
+Solar Judgment
+Windblade
+Agile combo
+Cyclone Strike
+Tempest Fury
+Arcane Mage
+Long-range specialist
+Arcane Blast
+Astral Nova
+16. Map Rules
+Spawn positions must be distributed fairly.
+Arena boundaries must be clearly defined.
+Geometry must avoid unintended collision traps.
+Hazards, where used, must be clearly telegraphed with enough reaction time.
+Additional arenas must follow a common arena template, spawn validation and performance budget.
+The Eternal Arena is the baseline production map for the MVP.
+17. UI/Information Rules
+Players must be able to understand health, score, timer, cooldowns and ultimate progression.
+Ability availability and cooldown state must be visually clear.
+Match completion must clearly communicate victory/defeat and rewards.
+Mobile combat buttons must remain reachable without unnecessarily obstructing the gameplay view.
+Reduced camera shake/effects options should be respected.
+18. Rule Parameters That Remain Open
+Parameter
+Current status
+Final player capacity per mode
+Open product decision
+Exact match duration
+Configurable; final value open
+Respawn policy
+Open product decision
+Tie/win rules
+Open product decision
+Final fighter damage/stats
+Open; requires balancing
+Exact cooldowns/energy costs
+Open; requires balancing
+Unlock economy values
+Configurable; requires testing
+Ranked mode launch timing
+Post-MVP / open decision
+19. Rule Enforcement Priority
+Server authority and security.
+Match-state validity.
+Combat legality.
+Reward integrity.
+Readable player feedback.
+Balance tuning through centralized configuration.
+Source basis: These rules consolidate the supplied combat requirements, security requirements, game-mode descriptions, progression rules and open product decisions. Where the source did not specify a numeric value, this document intentionally keeps the parameter configurable rather than inventing a value.

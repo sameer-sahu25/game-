@@ -1,0 +1,265 @@
+﻿BATTLE LEGENDS
+Software Requirements Specification (SRS)
+Version 1.0 â€¢ September 30, 2026
+Document Control
+Field
+Value
+Product
+Battle Legends
+Platform
+Roblox â€” PC, mobile/tablet, supported consoles
+Document
+Software Requirements Specification
+Source baseline
+Battle Legends PRD v1.0 + original development plan
+Status
+Development specification; implementation and platform validation required
+1. Purpose
+This SRS translates the Battle Legends product plan into implementable software requirements. It defines system behavior, functional requirements, non-functional requirements, interfaces, data, security, acceptance criteria and dependencies. It preserves the source plan's MVP-first approach.
+2. Product Scope
+Battle Legends is a stylized third-person multiplayer Roblox fighting game built around readable combat, original fighters, arena battles, progression and repeatable matchmaking.
+2.1 MVP Scope
+3D social lobby.
+The Eternal Arena.
+At least two original playable fighters.
+Light/basic attacks, heavy attacks, defense and dodge.
+One special ability per MVP fighter.
+Free-for-all match lifecycle.
+Battle HUD, results and session statistics.
+PC and mobile/touch controls.
+Server-authoritative combat and basic exploit protection.
+2.2 Release 1 Scope
+Eight original fighters.
+Three to five arenas as production capacity allows.
+Progression, Battle Coins, unlocks and cosmetics.
+DataStore persistence.
+Training mode, leaderboards and core settings.
+Required animation, effects, audio and tutorial content.
+2.3 Post-MVP / Later Scope
+1v1 Duel, 2v2 Team Battle and Survival.
+AI survival opponents.
+Ranked matchmaking.
+Events, expanded social features and additional content.
+3. Users and Use Cases
+Actor
+Core use cases
+New player
+Onboarding, choose fighter, practice, join match, understand rewards.
+Regular player
+Master fighters, earn currency, unlock content, review stats, replay modes.
+Competitive player
+Practice combos, rely on consistent rules, compare match performance.
+Social player
+Meet others in lobby, play with friends where supported, spectate later.
+Developer/operator
+Add content, tune balance, diagnose issues, test and maintain live configuration.
+4. Functional Requirements
+ID
+Area
+Requirement
+FR-001
+Game initialization
+The project shall initialize a modular client-server architecture and report missing dependencies/configuration errors.
+FR-002
+Lobby
+The system shall provide a navigable lobby with fighter preview, shop, leaderboard, daily reward, training and matchmaking access points.
+FR-003
+Arena
+The system shall provide The Eternal Arena with combat-safe boundaries, fair spawn points, central combat space and readable geometry.
+FR-004
+Fighter selection
+Players shall be able to preview available fighters and equip only fighters they are authorized to use.
+FR-005
+Character data
+Fighter statistics, abilities, animation references and unlock data shall be centrally configurable.
+FR-006
+Movement
+Players shall be able to move, jump, sprint and use dodge/dash behavior according to configured rules.
+FR-007
+Basic combat
+The system shall support light attacks, attack chains, hit reactions, damage, knockback and recovery.
+FR-008
+Heavy combat
+Heavy attacks shall have higher impact, longer recovery and readable telegraphing.
+FR-009
+Defense
+The system shall support blocking and dodging with configurable restrictions and cooldowns.
+FR-010
+Abilities
+Each production fighter shall support a unique special ability and an ultimate ability.
+FR-011
+Ultimate meter
+The system shall track and display ultimate progression and require sufficient meter before activation.
+FR-012
+Hit validation
+The server shall validate range, attack state, cooldown, target eligibility and applicable line-of-sight rules.
+FR-013
+Matchmaking
+The system shall register eligible players, assign arenas/spawns and start matches through a defined lifecycle.
+FR-014
+FFA
+Free-for-all shall maintain individual scoring, timer, match-end ranking and rewards.
+FR-015
+Results
+The system shall show placement/score, kills, rewards and return/queue controls.
+FR-016
+HUD
+The battle HUD shall display health, energy/ultimate meter, fighter identity, cooldowns, timer, score and relevant notifications.
+FR-017
+Controls
+The game shall support PC and touch input for MVP through a consistent input layer.
+FR-018
+Progression
+The system shall track level, experience, kills, deaths, wins, losses, matches, streaks and achievements as configured.
+FR-019
+Economy
+Battle Coins shall be server-authoritative and awarded through configured legitimate reward events.
+FR-020
+Persistence
+Player progression shall use safe DataStore loading/saving, retries, validation, schema versioning and migration support.
+FR-021
+Training
+Training shall support practice dummies, damage feedback, combo practice and safe reset behavior.
+FR-022
+Audio/VFX
+Combat and environment systems shall support reusable, performance-conscious sound and effect configurations.
+FR-023
+Security
+Remote requests shall be type-checked, rate-limited and rejected when invalid or excessive.
+FR-024
+Reliability
+The match manager shall handle disconnects, late joins, deaths, empty matches, shutdowns and unexpected state changes without corrupting rewards.
+FR-025
+Asset integrity
+The project shall never rely on fabricated asset IDs; missing external assets shall be explicitly identified as dependencies.
+5. Combat System Requirements
+Combat must feel responsive while remaining server authoritative.
+Client sends intent only; it does not declare damage, valid targets, currency or match outcomes.
+Attack definitions shall include cooldown, range, startup, active/recovery timing, damage, knockback, animation, audio, VFX and counterplay data.
+Combo systems shall support configurable three-hit/five-hit chains, timing windows, reset conditions and damage scaling.
+Long combos must not become unavoidable defeats.
+Major attacks and ultimates require clear telegraphing and reaction opportunities.
+Temporary invulnerability, movement restrictions and crowd-control effects must be explicitly configured rather than implicit.
+6. Game Modes
+Mode
+Status
+Rules/requirements
+Free-for-All
+MVP
+Individual scoring, configurable timer, highest eligible score wins, rewards and results.
+Training Grounds
+MVP-lite
+No competitive scoring; dummies, damage display, combo/ability testing.
+1v1 Duel
+Post-MVP
+Two players, configurable rounds, victory by round wins.
+2v2 Team Battle
+Post-MVP
+Two teams, team score, indicators, friendly fire off by default.
+Survival
+Post-MVP
+AI waves, increasing difficulty and rewards; bosses later.
+7. Match State Machine
+Waiting for eligible players
+Queue registration and eligibility validation
+Matchmaking and arena selection
+Spawn/teleport and character initialization
+Pre-match countdown
+Active combat
+End-condition evaluation
+Result calculation
+Idempotent reward distribution
+Results screen
+Return to lobby or next queue
+8. UI Requirements
+UI
+Required information/actions
+Main menu
+Logo, Play, Fighter Select, Shop, Inventory, Settings, Profile, Daily Rewards, Leaderboards, News.
+Lobby HUD
+Identity, level, currency, selected fighter and activities.
+Battle HUD
+Health, energy/ultimate, portrait, cooldowns, timer, score, kills, notifications.
+Character selection
+3D preview, role, attributes, abilities, ownership, unlock condition, equip/preview.
+Shop/inventory
+Items, prices, ownership, purchase confirmation, equipped state, errors/success.
+Results
+Placement, score, kills, rewards, progression, return/queue.
+Settings
+Audio, camera sensitivity, reduced shake/effects, UI scale and supported controls.
+Tutorial
+Movement, attack, defense, ability, rewards and matchmaking lessons.
+9. Data Requirements
+Player level and experience.
+Battle Coins.
+Combat statistics: kills, deaths, wins, losses, matches, streaks.
+Owned/unlocked fighters and cosmetics.
+Equipped fighter and cosmetics.
+Achievements.
+Suitable game preferences.
+Schema version and migration information.
+10. Technical Architecture
+Roblox location
+Responsibility
+Workspace
+Lobby, arenas, spawns, active characters, NPCs, environment and temporary effects.
+ReplicatedStorage
+Remotes, shared modules, configurations, fighter/ability definitions and client-visible references.
+ServerScriptService
+Bootstrap, match, combat, character/ability, data, economy, rewards, security and NPC services.
+ServerStorage
+Protected models, arena templates and server-only assets/configuration.
+StarterPlayerScripts
+Client bootstrap, input, camera, combat presentation, UI controllers, mobile controls, audio.
+StarterGui
+Main menu, HUD, selection, shop, inventory, settings, results, tutorial and notifications.
+SoundService / Lighting
+Audio organization, ambience, atmosphere and post-processing.
+11. Security Requirements
+Never trust client-provided damage values.
+Never trust client-provided currency balances or reward claims.
+Validate equipped fighter and ownership server-side.
+Validate cooldowns and attack phases server-side.
+Validate target eligibility and range.
+Rate-limit RemoteEvents and reject malformed/excessive requests.
+Compute kill attribution and rewards on the server.
+Prevent unauthorized teleportation, speed changes and invulnerability.
+Guard match completion and rewards against duplicate processing.
+12. Non-Functional Requirements
+Area
+Requirement
+Performance
+Optimize geometry, particles, physics, AI, UI updates and replication; profile on representative devices.
+Reliability
+Handle joins/leaves, respawns, failed data calls, cancellations and shutdowns safely.
+Usability
+Controls, objectives, status, cooldowns and results must be understandable.
+Accessibility
+Readable contrast, adjustable audio, reduced camera shake/effects and clear telegraphs.
+Maintainability
+New fighters/maps/abilities/rewards should primarily use reusable modules and configuration.
+Compatibility
+MVP target is PC and touch; controller support where feasible.
+Compliance
+Review current Roblox safety, privacy, asset, monetization and publication requirements before release.
+13. Asset Dependencies
+3D fighters, environment models, props and UI assets must be created or imported with valid permissions.
+Animations require valid uploaded animation assets/IDs before production use.
+Audio must be original, licensed or otherwise Roblox-permitted.
+The project must explicitly track assets that are implemented, tested, missing, externally dependent or planned.
+14. Acceptance Criteria
+Project opens and initializes without critical errors.
+Lobby and one complete arena load correctly.
+At least two original fighters can be selected, spawned and controlled.
+PC and mobile users can move, attack and use at least one special per fighter.
+Server validates attacks, damage, cooldowns and kill attribution.
+A complete FFA match starts, runs, ends and displays results.
+Players can respawn or return to the lobby according to configured rules.
+HUD displays accurate health, match status and session statistics.
+Invalid/excessive remote requests are rejected.
+Core UI actions work, and unavailable features are clearly identified.
+Multi-client Studio testing is completed and limitations recorded.
+15. Traceability
+This SRS is derived from the supplied Battle Legends PRD and master development plan. The PRD defines the MVP, release strategy, combat authority, game modes, architecture, acceptance criteria and M1â€“M7 handoff milestones. The master plan defines the 12 execution phases and the requirement to keep the project runnable after each phase.
+Source evidence: PRD v1.0 identifies the MVP as lobby + one arena + two fighters + FFA + HUD + PC/mobile controls, with later releases expanding content. The master plan defines phases 1â€“12 from foundation through publication.

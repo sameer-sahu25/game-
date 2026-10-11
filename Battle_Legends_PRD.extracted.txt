@@ -1,0 +1,462 @@
+﻿BATTLE LEGENDS
+Product Requirements Document
+A stylized 3D multiplayer fighting experience for Roblox
+Document field
+Details
+Product
+Battle Legends
+Document type
+Product Requirements Document (PRD)
+Version / date
+1.0 / September 30, 2026
+Target platform
+Roblox: PC, mobile, tablet and supported consoles
+Primary audience
+Players who enjoy arena combat, character mastery, progression and multiplayer competition
+Status
+Proposed product specification; implementation and platform validation required
+Product vision: Fight. Win. Become a Legend.
+1. Executive Summary
+Battle Legends is a stylized, third-person Roblox fighting game built around readable, skill-based combat, distinct original fighters, varied arenas and a repeatable progression loop. Players enter a social lobby, select a fighter, queue for a mode, battle other players or AI opponents, earn rewards and improve their collection. The product is intended to launch with a polished core experience before expanding into a larger roster, additional maps, ranked play and seasonal content.
+1.1 Product vision
+Deliver an accessible but deep Roblox combat experience with responsive controls, fair multiplayer rules, recognizable character identities and an environment that feels cohesive and rewarding to explore.
+1.2 Product goals
+Create a complete first playable experience with a lobby, at least one battle arena, character selection and functioning PvP combat.
+Support core play on PC and touch devices, with controller support where practical.
+Make combat server-authoritative and design the economy and progression to resist common exploit patterns.
+Establish reusable systems for fighters, abilities, arenas, UI, rewards and game modes.
+Provide a project structure and documentation that another developer can maintain and extend.
+1.3 Non-goals for the initial release
+A fully persistent open world or seamless MMO environment.
+A complex esports ranking system, tournaments or guild warfare.
+A large narrative campaign or cinematic story mode.
+Guaranteed support for every device configuration or a fixed frame-rate target without device testing.
+A promise that external models, audio or animations are included unless their files and permissions are actually available.
+2. Product Scope and Release Strategy
+Release
+Scope
+Exit criteria
+MVP / first playable
+Lobby, one arena, 2 fighters, basic attacks, one special per fighter, free-for-all match loop, HUD, session stats, PC and mobile controls.
+A player can join, select a fighter, enter a match, fight, receive results and return to the lobby without critical errors.
+Release 1
+8 original fighters, 3â€“5 arenas as production capacity allows, progression, coins, cosmetics, DataStore persistence, training mode, leaderboards and core settings.
+Core systems pass functional, multiplayer, persistence and device tests; required assets and configuration are verified.
+Post-launch
+Additional modes, AI survival, ranked matchmaking, events, more content and expanded social features.
+Each feature is separately scoped, balanced, tested and approved for release.
+Scope discipline: The MVP is the priority. Later features must not delay a stable, enjoyable core combat loop. The roster and map counts are targets, not a reason to ship unfinished or untested content.
+3. Users and Use Cases
+User segment
+Needs
+Primary use cases
+New player
+Understand controls quickly; enter a match without confusion; receive clear feedback.
+Complete onboarding, choose an available fighter, practice, join a match and understand rewards.
+Regular player
+Reliable matchmaking, fair combat, progression and reasons to return.
+Master a fighter, earn currency, unlock content, review stats and play multiple modes.
+Competitive player
+Consistent combat rules, readable telegraphs, dependable hit validation and meaningful stats.
+Practice combos, compare results, play 1v1 or team modes and improve performance.
+Social player
+A welcoming shared space and ways to play with friends.
+Meet in the lobby, form a party where supported, join the same mode and spectate where available.
+Developer / operator
+Maintainable systems, safe configuration and actionable diagnostics.
+Add fighters/maps, tune balance, inspect errors, test updates and manage live configuration.
+4. Core Gameplay Loop
+Launch into the Battle Legends lobby and view the player's profile, currency and available activities.
+Select or preview a fighter and review its role, statistics and abilities.
+Choose a mode or enter matchmaking; the system assigns a suitable arena and spawn.
+Fight using movement, basic attacks, heavy attacks, defense and character abilities.
+Receive match results, statistics, experience and eligible rewards.
+Return to the lobby to equip cosmetics, unlock content, practice or queue again.
+4.1 Design principles
+Combat clarity: attack start-up, active frames, hit feedback and cooldowns should be understandable.
+Fairness: no client-controlled damage, currency, kill credit or match outcome.
+Accessibility: basic actions should be easy to learn; advanced timing and positioning provide mastery.
+Consistency: similar actions should have predictable rules across fighters, with character-specific differences expressed through tunable data.
+Performance: effects and geometry must be scaled to supported devices and tested under multiplayer load.
+5. Game World and Content
+5.1 Lobby requirements
+A navigable 3D hub with central landmark, Battle Legends branding, fighter preview stands, shop, leaderboard, daily reward area, training entrance and matchmaking portals.
+Interactive stations must have clear prompts and keyboard, touch and controller-compatible interaction where supported.
+Lobby ambience, lighting and subtle effects must not obscure navigation or cause unnecessary performance cost.
+Players can inspect their profile, stats, selected fighter and available activities from the lobby.
+5.2 Arena requirements
+The first arena, The Eternal Arena, is a circular futuristic battleground with a central combat zone, concentric floor rings, glowing energy perimeter, four landmark towers, elevated platforms, decorative floating islands, fair spawn points and clear boundaries. Geometry must support combat readability and avoid unintended collision traps.
+Map concept
+Visual identity
+Gameplay considerations
+The Eternal Arena
+Futuristic circular platform, blue energy center, orange perimeter and towers.
+Baseline balanced free-for-all map; open sightlines and fair spawn distribution.
+Dragonfall Temple
+Floating ancient temple, stone bridges, crystals and cloud waterfalls.
+Vertical routes and readable traversal; avoid spawn camping and inaccessible ledges.
+Inferno Fortress
+Volcanic stone fortress, lava accents and fire-lit towers.
+Optional telegraphed hazards; safe combat lanes and clear danger indicators.
+Skyblade Dojo
+Japanese-inspired training grounds, timber structures, mountain backdrop and blossoms.
+Readable dueling spaces and training-friendly layout.
+Cybernetic City
+Neon rooftops, holographic signage and futuristic architecture.
+Distinct cover and elevation while maintaining navigation and performance.
+The initial production milestone requires one complete arena. Additional maps are subsequent content and must use a common arena template, spawn validation and performance budget.
+6. Fighters and Character System
+The initial design targets eight original fighters with distinct roles, silhouettes, palettes, animations and abilities. Use Roblox-compatible rigs (preferably R15), appropriate joints and attachments, Humanoid configuration, consistent scaling and optimized assets. Character concepts must be original and must not directly reproduce protected characters from existing franchises.
+Fighter
+Role
+Signature ability
+Ultimate concept
+Shadow Striker
+Balanced melee
+Shadow Burst: forward energy dash and burst.
+Phantom Overdrive: rapid sequence ending in an energy strike.
+Frost Reaper
+Technical ranged
+Frozen Wave: forward ice wave with brief slow.
+Absolute Zero: telegraphed ice-area burst.
+Thunder Ronin
+High mobility
+Thunder Dash: fast electrical dash impact.
+Storm Breaker: lightning strike with counterplay.
+Inferno Titan
+Heavy damage
+Flame Smash: ground slam and shockwave.
+Infernal Cataclysm: telegraphed fire-area attack.
+Void Phantom
+Evasive trickster
+Void Step: short-range movement ability.
+Dimensional Collapse: controlled void field.
+Solar Guardian
+Defensive
+Radiant Shield: temporary damage absorption.
+Solar Judgment: telegraphed solar attack.
+Windblade
+Agile combo
+Cyclone Strike: spinning wind attack.
+Tempest Fury: aerial sequence and finisher.
+Arcane Mage
+Long-range specialist
+Arcane Blast: magical projectile.
+Astral Nova: telegraphed magical area burst.
+6.1 Character data
+Each fighter has a stable identifier, display name, description, role, base attributes, ability references, animation references, effect references, unlock method and UI portrait.
+Attributes are configurable and balanced centrally; avoid hardcoding fighter-specific values across unrelated scripts.
+Selection, ownership and equipped state are validated on the server.
+The preview supports rotation and inspection without granting access to locked characters.
+Character assets and animation IDs must be verified; missing uploads must be explicitly identified as setup dependencies.
+7. Combat and Controls
+7.1 Combat feature requirements
+Light attack chains, heavy attacks, character special abilities and ultimate abilities.
+Configurable combo windows, recovery, cooldowns, damage scaling and knockback.
+Block, dodge, dash, sprint, jump, landing and appropriate hit reactions.
+Server-validated melee hitboxes, projectiles and area attacks, including range, line-of-sight and target eligibility checks where appropriate.
+Clear attack telegraphs, hit feedback, cooldown indicators, damage feedback and audio-visual impact cues.
+Reasonable counterplay: attacks should have readable start-up or other clear response windows; long combos must not become unavoidable defeats.
+Action
+Default input proposal
+Notes
+Move
+WASD / virtual joystick
+Use Roblox standard movement and adapt for touch.
+Camera
+Mouse / touch drag
+Sensitivity setting; avoid forced camera loss.
+Light attack
+Left mouse / on-screen button
+Combo-capable; server validates cooldown and target.
+Heavy attack
+E / dedicated touch button
+Slower, stronger and clearly telegraphed.
+Special
+Q / dedicated touch button
+Character-specific; cooldown and/or resource cost.
+Ultimate
+R / dedicated touch button
+Requires sufficient meter; visible activation and counterplay.
+Block
+F / dedicated touch button
+Defensive state with defined movement and stamina rules.
+Dodge
+Shift / dedicated touch button
+Movement ability with cooldown and carefully bounded protection.
+Jump
+Space / Roblox touch jump
+Standard Roblox jump unless a mode requires otherwise.
+7.2 Combat authority and security
+The client sends intent (for example, attack type); it does not declare damage, target validity, currency or match results.
+The server validates character state, equipped fighter, cooldown, range, attack phase, target health and relevant match rules.
+Remote requests are type-checked, rate-limited and rejected when invalid or excessive.
+Kill attribution and rewards are computed server-side and guarded against duplicate processing.
+Movement and ability effects must not permit unauthorized teleportation, speed changes or invulnerability.
+Combat tuning is centralized and testable; exploit prevention must not rely only on client-side checks.
+8. Game Modes and Match Flow
+Mode
+Rules
+MVP status
+Free-for-All
+Individual scoring; configurable timer; match-end ranking and rewards.
+MVP
+1v1 Duel
+Two-player match with configurable rounds and round wins.
+Post-MVP
+2v2 Team Battle
+Two teams, team score, team indicators and configurable friendly fire.
+Post-MVP
+Training Grounds
+Practice dummies, damage feedback, combo practice and optional reset controls.
+MVP-lite / expand after core combat
+Survival
+Waves of AI opponents, escalating difficulty and wave rewards.
+Post-MVP
+8.1 Match state lifecycle
+Waiting for eligible players.
+Queue registration and mode eligibility validation.
+Matchmaking and arena selection.
+Teleport or spawn assignment and character initialization.
+Pre-match countdown and match start.
+Active combat with server-maintained score and timer.
+End-condition evaluation, including disconnects and player-count changes.
+Final result calculation and idempotent reward distribution.
+Results screen and return to lobby or next queue.
+The match manager must handle empty matches, late arrivals, player departures, deaths, respawns, server shutdown and unexpected state changes without duplicating rewards or leaving players stranded.
+9. User Interface and UX
+9.1 Visual system
+Use a coherent dark navy interface with cyan/blue highlights, purple ability accents and gold reward accents. Typography, spacing, iconography, panel treatment, button states and transitions must be consistent. Maintain strong contrast and keep critical combat information legible.
+Screen / component
+Requirements
+Main menu
+Logo, Play, Fighter Select, Shop, Inventory, Settings, Profile, Daily Rewards, Leaderboards and News.
+Lobby HUD
+Player identity, level, currency, selected fighter and clear access to activities.
+Battle HUD
+Health, energy/ultimate meter, fighter portrait, cooldowns, match timer, score, kills and concise notifications.
+Character selection
+3D preview, role, attributes, abilities, ownership, unlock conditions and equip/preview actions.
+Shop and inventory
+Items, prices, ownership, purchase confirmation, equipped state and error/success feedback.
+Match results
+Placement, score, kills, rewards, progression and return/queue actions.
+Settings
+Audio, camera sensitivity, reduced shake/effects, UI scale and supported control preferences.
+Tutorial
+Interactive movement, attack, defense, ability, reward and matchmaking lessons with skip/replay options.
+9.2 Platform controls
+PC: keyboard and mouse with configurable sensitivity and clear key prompts.
+Mobile/tablet: virtual movement, touch camera, appropriately sized combat buttons and responsive safe-area-aware layout.
+Controller: supported movement, camera, combat bindings and navigable menus where feasible.
+All input actions must be mapped through a consistent input layer so gameplay systems do not depend on one device.
+10. Progression, Economy and Rewards
+10.1 Progression
+Track level, experience, kills, deaths, wins, losses, matches played, streaks, achievements, owned fighters and cosmetics.
+Award experience for completed matches and configured objectives; victory and achievement bonuses may be used.
+Use configurable level thresholds and clear progress feedback.
+Provide meaningful unlocks through play while preserving competitive fairness.
+10.2 Battle Coins
+Battle Coins are the primary earnable in-game currency.
+Potential sources include completed matches, victories, legitimate kills, daily rewards and achievements.
+All balance changes and item grants are server-authoritative.
+Use configurable reward tables, transaction validation and duplicate-reward protection.
+Show clear reward breakdowns and purchase costs.
+10.3 Content and monetization
+The shop may offer fighters, cosmetics, outfits, emotes, victory poses, visual effects and profile decorations. Optional Robux purchases must use supported Roblox purchase flows, server-side receipt handling and transparent disclosures. Avoid selling decisive competitive advantages. Any paid random-reward mechanic must be reviewed against current Roblox rules before implementation.
+11. Data Persistence
+Use Roblox DataStoreService for durable player progress, with safe loading, saving, validation and recovery behavior. Never replace a failed load with defaults and then save those defaults over existing data.
+Persist currency, level/experience, statistics, owned and equipped content, achievements and suitable preferences.
+Use protected calls, bounded retries, periodic saves where appropriate, leave saves and BindToClose handling.
+Validate and normalize data; use schema versions and migration logic.
+Make reward grants idempotent and protect against duplicate match completion processing.
+Test persistence in a configured test environment and document Roblox Studio API access requirements.
+12. AI, Training and Social Features
+12.1 Training
+Provide stationary, moving, blocking, dodging, combo and damage-test dummies.
+Display damage and useful practice feedback.
+Allow safe reset and configurable practice conditions.
+Keep training rewards separate from competitive rewards unless explicitly balanced and validated.
+12.2 AI survival (post-MVP)
+NPC states: idle, patrol, detect, approach, attack, defend, recover and defeated.
+Use PathfindingService when appropriate and throttle AI updates.
+Offer Easy, Normal, Hard and Expert tuning through configuration.
+NPC attacks must be readable and follow consistent gameplay rules.
+12.3 Social features
+Player profiles and match statistics.
+Party invitations and friend-oriented matchmaking where supported.
+Private server support and spectator mode as later features.
+Use Roblox-supported reporting and moderation features; do not create unsafe off-platform communication.
+13. Audio, Animation and Effects
+Asset category
+Required content
+Implementation notes
+Animation
+Idle, walk, run, sprint, jump, fall, land, dodge, dash, block, attacks, combos, abilities, hit reactions, defeat and victory.
+Use valid uploaded animation assets; configure priorities, blending and rig compatibility.
+Combat audio
+Punches, heavy hits, ability charge/release, impacts, footsteps, blocks, dodges and ultimate cues.
+Use original or properly licensed Roblox-permitted audio; expose volume controls.
+Environment audio
+Lobby ambience, map ambience, portals and environmental events.
+Use appropriate spatialization and cleanup.
+Visual effects
+Impact sparks, trails, projectiles, shockwaves, auras, shields, elemental attacks and victory effects.
+Reuse and clean up instances; provide reduced-effects settings and mobile tuning.
+UI audio
+Button interactions, confirmations, errors, countdowns, rewards and level-up cues.
+Avoid excessive repetition and allow volume adjustment.
+14. Technical Architecture
+Use a modular client-server architecture with shared configuration and server-authoritative services. The exact implementation hierarchy may be adjusted to fit Roblox services and a chosen project workflow (for example, direct Studio authoring or Rojo), but dependencies and responsibilities must remain explicit.
+Roblox location
+Intended contents
+Workspace
+Lobby, arena instances, spawn locations, active characters, NPCs, environment and temporary effects.
+ReplicatedStorage
+Remotes, shared modules, configuration, character/ability definitions and client-visible asset references.
+ServerScriptService
+Bootstrap, game/match management, combat, character/ability services, data, economy, rewards, security and NPC services.
+ServerStorage
+Protected character models, arena templates, server-only assets and configurations.
+StarterPlayerScripts
+Client bootstrap, input, camera, combat presentation, UI controllers, mobile controls and audio.
+StarterGui
+Main menu, HUD, character selection, shop, inventory, settings, results, tutorial and notifications.
+SoundService / Lighting
+Audio organization, environment ambience, atmosphere and post-processing settings.
+14.1 Code quality requirements
+Use readable Luau, strict typing where practical, consistent naming and comments for non-obvious behavior.
+Separate services, controllers, configuration and presentation logic.
+Use centralized definitions for fighter stats, abilities, cooldowns, rewards and asset references.
+Clean up event connections, temporary instances and asynchronous work appropriately.
+Use protected calls for failure-prone platform services and provide actionable diagnostics.
+Do not reference nonexistent instances, undeclared modules or fabricated asset IDs.
+Create an initialization/bootstrap path that checks dependencies and reports configuration errors.
+15. Non-Functional Requirements
+Area
+Requirement / acceptance direction
+Performance
+Optimize parts, meshes, particles, physics, AI, UI updates and replication; validate with Roblox profiling tools on target devices.
+Reliability
+Handle joins, leaves, respawns, failed data calls, match cancellations and server shutdown without corrupting progress.
+Security
+Validate all important gameplay and economy decisions on the server; rate-limit remotes and reject invalid requests.
+Usability
+Controls, objectives, status, cooldowns and results are understandable without external instructions.
+Accessibility
+Provide readable contrast, adjustable audio, reduced camera shake/effects and clear attack telegraphs.
+Maintainability
+New fighters, abilities, maps and rewards should be added primarily through reusable modules and configuration.
+Compatibility
+Test PC and touch controls for MVP; test controller support where available and document limitations.
+Compliance
+Follow current Roblox community, safety, privacy, asset, monetization and publication requirements.
+16. Analytics and Success Measures
+Instrument only appropriate, policy-compliant gameplay events and avoid collecting unnecessary personal information. Use available Roblox analytics and developer dashboards where supported.
+Metric
+Purpose
+Tutorial completion
+Understand whether new players can learn core controls.
+First-match conversion
+Measure whether players proceed from lobby to a first battle.
+Match completion rate
+Identify disconnects, abandonment or match-flow issues.
+Combat engagement
+Review attack/ability usage and whether fighters are being used.
+Session and return behavior
+Understand engagement over time without assuming a target outcome.
+Progression distribution
+Check reward pacing, unlock access and economy balance.
+Crash/error and performance signals
+Identify technical problems and device-specific regressions.
+Set numeric targets only after a baseline is collected from a representative test group. Do not treat unvalidated estimates as commitments.
+17. Risks, Dependencies and Open Decisions
+Risk / dependency
+Impact
+Mitigation or decision needed
+External models, animations and audio require creation, upload or permission.
+Missing or unusable assets can block polish or functionality.
+Track asset status and ownership; use verified IDs only; provide import workflows.
+Scope is large for a first release.
+A broad feature set can delay a stable core game.
+Prioritize MVP; move additional modes, maps and social features to later releases.
+Combat balance is iterative.
+Dominant fighters or unavoidable combos can reduce fairness.
+Use configurable values, playtests, telemetry and a documented balance process.
+DataStore behavior and limits.
+Progress loss or throttling can harm trust.
+Use safe retries, validation, schema versioning and failure-aware saves.
+Device performance varies.
+Effects and geometry may run poorly on lower-end devices.
+Profile early, provide scalable effects and test real target devices.
+Roblox platform policies can change.
+Monetization, assets or social features may require revision.
+Review current Roblox requirements before release and each major update.
+Matchmaking and server capacity.
+Players may wait or enter unsuitable matches.
+Define capacity, queue behavior, timeout and fallback rules before production.
+17.1 Open product decisions
+Final player capacity per mode and arena.
+Match duration, respawn policy and win/tie rules.
+Whether fighters are unlocked through play, starter selection or both.
+Final fighter statistics, cooldowns, energy costs and damage values.
+Whether ranked mode is included in the first public release.
+Exact persistence schema and seasonal reset policy.
+Final visual asset pipeline and whether external 3D tools are used.
+Monetization scope and any required policy review.
+18. Acceptance Criteria
+The MVP is acceptable for internal playtesting when all of the following are true:
+The project opens and initializes in Roblox Studio without critical errors.
+The lobby and one complete arena are generated or loaded correctly.
+At least two original fighters can be selected, spawned and controlled.
+PC and mobile players can move, attack and use at least one special ability per fighter.
+The server validates attacks, damage, cooldowns and kill attribution.
+A complete free-for-all match can start, run, end and show results.
+Players can respawn or return to the lobby according to the configured rules.
+The HUD displays accurate health, match status and session statistics.
+Invalid or excessive remote requests are rejected safely.
+Core UI actions work, and unavailable features are clearly identified rather than presented as functional.
+The game has been tested with multiple clients in Studio and documented limitations are recorded.
+The first public release additionally requires:
+Required fighter and map content is complete and tested.
+Persistent data, reward handling and purchase flows are tested in an appropriate environment.
+Mobile layout and performance have been checked on representative devices.
+All external assets have valid IDs, permissions and suitable content.
+Current Roblox publication, safety, privacy and monetization requirements have been reviewed.
+A release checklist, rollback/update plan and player-facing game description are ready.
+19. Delivery Plan and Handoff
+Milestone
+Deliverable
+Completion evidence
+M1 â€” Foundation
+Project structure, bootstrap, shared configuration and diagnostics.
+Project initializes; dependencies are checked; no critical startup errors.
+M2 â€” First playable world
+Lobby, Eternal Arena, spawns and two fighters.
+Players can enter the world and move around reliably.
+M3 â€” Combat prototype
+Attacks, hit validation, damage, defense and special abilities.
+Multi-client combat test passes; invalid requests are rejected.
+M4 â€” Match loop and UI
+HUD, free-for-all lifecycle, results and return flow.
+A complete match can be played end-to-end.
+M5 â€” Progression
+Stats, currency, rewards, unlocks and persistence.
+Progress saves and loads safely in configured tests.
+M6 â€” Content and polish
+Additional fighters/maps, animation, effects, audio and tutorial.
+Content checklist and device tests are completed.
+M7 â€” Release candidate
+Security, performance, QA, documentation and publishing preparation.
+Acceptance criteria pass or remaining issues are explicitly documented.
+19.1 Required handoff package
+Roblox Studio place/project files or a documented project-generation workflow.
+All scripts and modules with correct placement and dependencies.
+3D model files or procedural generation scripts and import instructions.
+Animation and audio references, verified IDs where available, and upload steps for missing assets.
+Configuration files for fighters, abilities, maps, rewards and game modes.
+A setup guide, testing checklist, troubleshooting guide and publishing checklist.
+A status report distinguishing implemented, tested, externally dependent and planned features.
+20. Final Product Statement
+Battle Legends is intended to become a polished, expandable Roblox multiplayer fighting game with an original visual identity, a social lobby, carefully designed arenas, distinctive fighters, responsive and fair combat, accessible controls, meaningful progression and reliable technical foundations. The development priority is a stable and enjoyable core loop first, followed by additional content and advanced systems. Completion must be demonstrated through usable project artifacts and testing evidenceâ€”not through code volume or claims alone.
+END OF PRODUCT REQUIREMENTS DOCUMENT

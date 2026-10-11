@@ -1,0 +1,116 @@
+﻿BATTLE LEGENDS
+Development Phases & Execution Plan
+Version 1.0 â€¢ September 30, 2026
+1. Development Strategy
+The project shall be developed incrementally. Every phase must leave the project runnable, and a phase is not complete merely because scripts exist; implementation must be tested in the appropriate environment.
+2. MVP Gate
+The MVP gate is the first major release checkpoint: lobby, one arena, two fighters, basic combat, one special per fighter, FFA match loop, HUD/session stats and PC/mobile controls. The exit condition is an end-to-end playable loop without critical errors.
+3. Phase Plan
+Phase
+Scope
+Exit evidence
+Category
+Phase 1 â€” Project Foundation
+Project structure; Roblox service configuration; shared configuration; initialization; client-server architecture; startup diagnostics.
+Project initializes cleanly; dependencies are checked; no critical startup errors.
+Foundation
+Phase 2 â€” 3D World Generation
+Main lobby; Eternal Arena; spawns; towers/platforms/props; lighting/atmosphere; boundaries/collision.
+Players can enter, navigate and spawn safely.
+World
+Phase 3 â€” Player Characters
+First two fighters; rigs; selection; character stats; spawning, movement and respawning.
+Two fighters can be selected and controlled reliably.
+Characters
+Phase 4 â€” Core Combat
+Basic attacks; hit detection; server damage; cooldowns; hit reactions; block; dodge; multiplayer verification.
+Two clients can fight and invalid combat requests are rejected.
+Combat
+Phase 5 â€” Abilities & Animation
+Ability framework; special attacks; ultimates; animation; combat audio; VFX; balancing.
+Both fighters have functional abilities with tested feedback and counterplay.
+Abilities
+Phase 6 â€” User Interface
+Main menu; HUD; fighter selection; combat controls; mobile support; settings; notifications; responsive layout.
+Core screens and combat controls function on target input types.
+UI/UX
+Phase 7 â€” Multiplayer Game Modes
+FFA; 1v1; 2v2; training; match lifecycle; rewards/results.
+MVP FFA is end-to-end; later modes are only marked complete after their own tests.
+Modes
+Phase 8 â€” Progression & Persistence
+Stats; XP/levels; Battle Coins; unlocks; cosmetics/inventory; secure DataStore; reliability tests.
+Progress safely saves/loads in configured test environment.
+Progression
+Phase 9 â€” Additional Content
+Eight-fighter roster; remaining arenas; AI; survival; achievements; leaderboards; optional shop/social systems.
+Each feature is separately tested and dependencies verified.
+Content
+Phase 10 â€” Optimization & Testing
+Functional, multiplayer, mobile, performance and security testing; bug fixing; optimization; integration testing.
+Critical bugs resolved; target-device and multiplayer test evidence recorded.
+QA
+Phase 11 â€” Final Polish
+Environment detail; animation/UI/audio polish; balance; tutorials; promotional assets; documentation.
+Release candidate content is coherent, readable and documented.
+Polish
+Phase 12 â€” Publication Preparation
+Roblox configuration; asset ownership/permissions; private release test; game page; release checklist; publishing process.
+Private release passes checklist and publication package is ready.
+Release
+4. Recommended Internal Gates
+Gate
+Rule
+Gate A â€” Foundation
+Do not begin content-heavy work until initialization, folders, shared config and diagnostics are stable.
+Gate B â€” First Playable
+Do not expand roster/maps until two fighters can reliably spawn, move and fight in one arena.
+Gate C â€” Combat Lock
+Do not build extensive progression around combat that has not passed multi-client validation.
+Gate D â€” MVP Lock
+Do not treat post-MVP modes as launch blockers if they threaten core-loop stability.
+Gate E â€” Release Candidate
+Do not publish while critical security, persistence, asset-permission or device issues remain.
+5. Phase Testing Standard
+Functional test: feature performs its intended action.
+Integration test: feature works with dependent systems.
+Multiplayer test: server/client behavior remains authoritative and consistent.
+Failure test: disconnects, invalid requests and unexpected states are handled safely where relevant.
+Device test: PC and touch behavior are checked for MVP.
+Performance test: expensive geometry/effects/scripts are profiled before release.
+Evidence: record tested version, scenario, result, issue and resolution.
+6. Feature Status Vocabulary
+Status
+Meaning
+Planned
+Described in the product plan but not implemented.
+In development
+Implementation work is underway.
+Implemented
+Implementation exists but acceptance testing is not complete.
+Tested
+Implementation passed the relevant documented test.
+Externally dependent
+Requires an asset, Roblox setting, upload, permission or account action.
+Blocked
+Cannot proceed until a dependency or defect is resolved.
+Released
+Passed release acceptance and is included in the authorized build.
+7. Handoff Package
+Roblox Studio place/project files or documented generation workflow.
+All scripts/modules with correct placement and dependencies.
+3D model files or procedural generation scripts.
+Animation/audio references and upload steps for missing assets.
+Configuration for fighters, abilities, maps, rewards and modes.
+Setup, testing, troubleshooting and publishing guides.
+QA status report separating implemented, tested, externally dependent and planned features.
+8. Release Sequence
+Finish MVP and validate the core loop.
+Complete Release 1 progression/content according to capacity.
+Run security, persistence, multiplayer and device QA.
+Complete final polish and tutorial.
+Verify current Roblox platform requirements and asset permissions.
+Run private release testing.
+Prepare game page and release materials.
+Publish only through the authorized Roblox account after release criteria are met.
+Source basis: The 12 phases above follow the supplied master plan. The PRD additionally defines M1â€“M7 milestone evidence; those milestones are mapped into the phase sequence rather than replacing it.
